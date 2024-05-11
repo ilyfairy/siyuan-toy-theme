@@ -17,13 +17,14 @@ window.theme.observers = {}; // 针对不同功能的观测器，每个观测器
 
 /* 颜色配置文件列表 */
 window.theme.colors = [
-    'palette/fruitspink.css',
+    'palette/fruitspink-new.css',
     'palette/bearlight.css',
     'palette/fountain.css',
     'palette/rainypuff.css',
     'palette/pbook.css',
     'palette/autumn.css',
     'palette/eyeprotection.css',
+    'palette/fruitspink.css',
     'palette/olive.css',
     'palette/sapphire.css',
     'palette/logseqcyan.css',
@@ -195,7 +196,7 @@ function DocumentCreationDate() {
                 var nodeID = editor.parentElement.firstChild.getAttribute("data-node-id");
                 editor.insertAdjacentHTML("beforebegin", `<div data-node-id="${nodeID}" style="padding-left:${paddingLeft};" data-type="docInfoContainer"><div>`)
             }
-            allDocumentTitleElement.push(element.children[1].children[1]);
+            allDocumentTitleElement.push(element.children[1].children[0].children[0]); // .protyle-top[0]
         } else if (window.theme.clientMode == "mobile") {
             // 移动端要检测node-id是否对应并重新刷新
             var editor = element.children[1].children[1];
@@ -210,12 +211,13 @@ function DocumentCreationDate() {
         }
     }
 
-    for (let index = 0; index < allDocumentTitleElement.length; index++) {
-        const element = allDocumentTitleElement[index];
-        var documentCreatTimeElement = creatTimeSpanElement(element);
-        documentCreatTimeElement.innerText = "获取文档创建日期中……";
-        tilteWhlie(element, documentCreatTimeElement);
-    }
+    // 逻辑有问题
+    // for (let index = 0; index < allDocumentTitleElement.length; index++) {
+    //     const element = allDocumentTitleElement[index];
+    //     var documentCreatTimeElement = creatTimeSpanElement(element);
+    //     documentCreatTimeElement.innerText = "获取文档创建日期中……";
+    //     tilteWhlie(element, documentCreatTimeElement);
+    // }
 }
 
 function tilteWhlie(element, documentCreatTimeElement) {
@@ -268,6 +270,8 @@ function creatTimeSpanElement(tilteElement) {
 
 /**获得这个文档的创建时间 */
 function getDocumentTime(tilteElement) {
+    console.log("获取文档时间 element:", tilteElement);
+    window.test = tilteElement;
     try {
         var tS = tilteElement.getAttribute("data-node-id");
         if (tS == null) return "";
