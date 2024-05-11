@@ -17,13 +17,13 @@ window.theme.observers = {}; // 针对不同功能的观测器，每个观测器
 
 /* 颜色配置文件列表 */
 window.theme.colors = [
+    'palette/fruitspink.css',
     'palette/bearlight.css',
     'palette/fountain.css',
     'palette/rainypuff.css',
     'palette/pbook.css',
     'palette/autumn.css',
     'palette/eyeprotection.css',
-    'palette/fruitspink.css',
     'palette/olive.css',
     'palette/sapphire.css',
     'palette/logseqcyan.css',
